@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from "mongoose"
 
 const roomChatSchema = new mongoose.Schema({
     name: {
@@ -20,4 +20,4 @@ const roomChatSchema = new mongoose.Schema({
 
 const RoomChat = mongoose.model('RoomChat', roomChatSchema)
 
-module.exports = RoomChat
+export default RoomChat

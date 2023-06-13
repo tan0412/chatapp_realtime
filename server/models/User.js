@@ -1,6 +1,5 @@
-const mongoose = require('mongoose');
-const { isEmail } = require('validator');
-const { pictureDefault } = require('../constant');
+import mongoose from 'mongoose';
+import pictureDefault from '../constant.js';
 
 
 const useSchema = new mongoose.Schema({
@@ -43,4 +42,4 @@ const useSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', useSchema);
 
-module.exports = User;
+export default User;
