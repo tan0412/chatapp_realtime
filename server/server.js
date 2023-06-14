@@ -17,7 +17,7 @@ import RoomChat from './models/RoomChat.js';
 // admin.initializeApp({
 //   credential: admin.credential.cert(serviceAccount),
 // });
-
+const port = process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extended: true, limit:'50mb'}));
 app.use(express.json({limit: '50mb'}));
@@ -112,7 +112,8 @@ app.use("/", friendRoute);
 app.use("/", roomRoute);
 app.use("/", messageRoute);
 
-server.listen(8080,'192.168.61.103', (req, res) => {
-    console.log('listening on port 8080')
-})
+
+server.listen(port, () => {
+  console.log(`listening on port ${port}`);
+});
 
