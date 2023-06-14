@@ -13,7 +13,7 @@ import { StyleSheet } from 'react-native'
 import axiosClient from '../../api/axiosClient'
 
 
-const socket = io('http://192.168.13.107:8080')
+const socket = io('http://192.168.61.103:8080')
 
 const MessageScreen = ({route} : any) =>  {
   const [messages, setMessages] = useState<any>([]);
@@ -45,7 +45,7 @@ const MessageScreen = ({route} : any) =>  {
     const fetchApi = async () => {
       try {
         const token = await getToken();
-        const response = await axios.get(`http://192.168.13.107:8080/user/message/${recipientId}`, {
+        const response = await axios.get(`http://192.168.61.103:8080/user/message/${recipientId}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -58,6 +58,7 @@ const MessageScreen = ({route} : any) =>  {
             user: { _id: obj.sender }
           }));
           setMessages(newArr);
+          console.log(messages);
         }
       } catch (err) {
         console.error(err);
@@ -94,7 +95,6 @@ const MessageScreen = ({route} : any) =>  {
       user={
        user                               
       }
-      
       renderAvatar={renderCustomView}
     />
     </View>

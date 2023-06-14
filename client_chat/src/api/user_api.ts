@@ -12,13 +12,8 @@ export const userSignUp = async ({name, email, password} : any) => {
 
 export  const userData = async () => {
     try {
-        const token = await getToken();
-        const result = await axiosClient.get('/users',{
-                  headers: {
-                    Authorization: `Bearer ${token}`
-                  }
-                } ); 
-       return result
+        const result = await axiosClient.get('/users')
+       return result.data
     }
     catch (error) {
         return error;
@@ -28,7 +23,7 @@ export  const userData = async () => {
 export const searchUserData  = async (text: string) => {
     try {
         const results = await axiosClient.get(`/list_user/${text}`)
-        return results
+        return results.data
     } catch (error) {
         return error;
     }
@@ -36,12 +31,7 @@ export const searchUserData  = async (text: string) => {
 
 export const addFriend = async ({name, phone, picture}: any) => {
     try {
-        const token = await getToken();
-        const results = await axiosClient.post('/user/friend', {name, phone, picture}, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            },
-        }
+        const results = await axiosClient.post('/user/friend', {name, phone, picture},
         )
         
     } catch (error) {

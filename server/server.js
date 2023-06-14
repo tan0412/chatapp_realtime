@@ -102,14 +102,15 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log('User disconnected');
     })
-}  
-                                                                                                                     );
+},
+
+   
+                                                                                                               );
 app.use("/auth", authRoute);
 app.use("/", userRoute);
 app.use("/", friendRoute);
 app.use("/", roomRoute);
 app.use("/", messageRoute);
-
 
 server.listen(8080,'192.168.61.103', (req, res) => {
     console.log('listening on port 8080')

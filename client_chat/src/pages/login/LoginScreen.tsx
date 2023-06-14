@@ -27,12 +27,9 @@ const LoginScreen = ({navigation} : any) => {
     }
     const handleConfirm = async () => {
         try{
-           
         const deviceToken  = await messaging().getToken() 
-        
-         await axios.post('http://192.168.13.107:8080/login', {email, password, deviceToken})
+         await axiosClient.post('/auth/login', {email, password, deviceToken})
         .then ( (res) => {
-           
             if(res.status===200) {
                 AsyncStorage.setItem('token', res.data.token);
                 Alert.alert('Login successful')

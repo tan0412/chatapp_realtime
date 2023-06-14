@@ -22,7 +22,7 @@ const HomeScreen = ({navigation} : any) => {
         const fetchApi = async () => {
           try {
             const token = await getToken();
-            const response = await axios.get(`http://192.168.13.107:8080/chatroom`, {
+            const response = await axios.get(`http://192.168.61.103:8080/chatroom`, {
               headers: {
                 Authorization: `Bearer ${token}`
               }

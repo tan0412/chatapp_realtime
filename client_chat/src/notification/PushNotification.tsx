@@ -20,9 +20,6 @@ export const NotificationListener = async () => {
 
       messaging().setBackgroundMessageHandler(async (remoteMessage) => {
         console.log('Received background message', remoteMessage);
-      
-        // Xử lý tin nhắn nền tại đây
-      
         return Promise.resolve();
       
       })

@@ -40,17 +40,13 @@ const ContactScreen = ({navigation}: any) => {
   useEffect(() => {
     const fetchApi = async () => {
       try{
-      const token = await getToken()
-      await axiosClient.get('/user/list-friend', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        }
-      }).then((res) => {setData(res)})
+      const response = await axiosClient.get('/user/list-friend')
+      setData(response.data)
     }catch(err) {
       console.error(err)
     }}
     fetchApi()
-  },[data])
+  },[])
 
   useEffect (() => {
     const sortContacts = data?.sort((a,b) => a.name.localeCompare(b.name))

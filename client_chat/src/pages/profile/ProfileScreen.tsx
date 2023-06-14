@@ -15,8 +15,6 @@ import { userData } from "../../api/user_api";
 import { useDispatch } from "react-redux";
 import { getUserInfoAction } from "../../redux/actions/UserAction";
 
-
-
 const ProfileScreen = () => {
   const dispatch = useDispatch()
    const [userInfo, setUserInfo] = useState({})
@@ -27,7 +25,7 @@ const ProfileScreen = () => {
    const [phone, setPhone] = useState('')
    
    const data = useAppSelector(state => state.user.userData)
-  
+
   useEffect(() =>{
     setUserInfo(data)
     setName(userInfo.name)
@@ -35,10 +33,6 @@ const ProfileScreen = () => {
     setPhone(userInfo.phone)
   },[userInfo])
  
-  
-  
-   
-
  const onImageLibrary = useCallback (() => {
   launchImageLibrary({mediaType: 'photo', selectionLimit: 1, includeBase64: true}, (response) => {
     if (response.didCancel) {
@@ -55,13 +49,7 @@ const ProfileScreen = () => {
   }, [])
 
   const handleUpdate = async() => {
-    const token  = await getToken();
-     
-     axiosClient.put('/update',{name ,email, phone, picture}, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      } 
-     }
+     axiosClient.put('/update',{name ,email, phone, picture}
      ).then((res) =>{
         if(res.status === 200) {
           Alert.alert('Update Successfully')
